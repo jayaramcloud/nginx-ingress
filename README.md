@@ -16,6 +16,7 @@
 
  After this login to the Kuberntes Cluster to deploy the application.
 ```
+# Deploying React-cat & its services
 neofinone@cloudshell:~$ kubectl apply -f  react-cat-service.yaml 
 service/react-cat created
 neofinone@cloudshell:~$ kubectl get deployment -n dev
@@ -27,6 +28,21 @@ deployment.apps/react-cat created
 neofinone@cloudshell:~$ kubectl get service -n dev
 NAME        TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
 react-cat   ClusterIP   10.8.12.178   <none>        80/TCP    91s
+
+# Deploying Hello-go & its services
+neofinone@cloudshell:~$ kubectl apply -f hello-go.yaml 
+deployment.apps/hello-go created
+neofinone@cloudshell:~$ kubectl get deployments -n dev         
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+hello-go    3/3     3            3           57s
+react-cat   1/1     1            1           3h21m
+
+neofinone@cloudshell:~$ kubectl apply -f hello-go-service.yaml 
+service/hello-go created
+neofinone@cloudshell:~$ kubectl get services -n dev
+NAME        TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
+hello-go    ClusterIP   10.8.15.42    <none>        80/TCP    52s
+react-cat   ClusterIP   10.8.12.178   <none>        80/TCP    3h22m
 
 ```
 
