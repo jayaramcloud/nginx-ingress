@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: reallifeprojects
   namespace: dev
+#  https://github.com/nginxinc/kubernetes-ingress/tree/v2.1.0/examples
 spec:
   ingressClassName: nginx
  #tls:
@@ -38,3 +39,13 @@ spec:
                 name: hello-go
                 port:
                   number: 8081
+    - host: www.freemiumdb.com
+      http:
+        paths:
+          - path: /cats
+            pathType: Prefix
+            backend:
+              service:
+                name: react-cat
+                port:
+                  number: 80
