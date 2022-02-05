@@ -140,7 +140,13 @@ replicaset.apps/nginx-ingress-nginx-controller-559779bdcc   1         1         
 ```
 
 ### 3. Get the IP address of the Load balancer and enter it in the DNS of the domain management interface:
-https://domains.google.com/registrar/reallifeprojects.com/dns#resourcerecords
+https://domains.google.com/registrar/reallifeprojects.com/dns#resourcerecords  
+Custom records  
+Hostname                  Type TTL           	Data  
+*.reallifeprojects.com	    A	  1 hour	   34.136.24.118  
+hello.reallifeprojects.com	A	  1 hour	   34.136.24.118  
+www.reallifeprojects.com  	A	  1 hour	   34.136.24.118  
+
 ```
 neofinone@cloudshell:~ (neofine)$ sudo apt-get install iputils-ping
 ```
