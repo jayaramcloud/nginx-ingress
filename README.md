@@ -1,6 +1,6 @@
-# nginx-ingress
+### nginx-ingress
 
-1. Ensure the applications are **deployed** and running:
+### 1. Ensure the applications are **deployed** and running:
 
  The code to build the React Cat application is:
  
@@ -34,7 +34,7 @@ react-cat   ClusterIP   10.8.12.178   <none>        80/TCP    91s
 
 ```
 
-2. Install the Nginx Ingress **Controller**:
+### 2. Install the Nginx Ingress **Controller**:
 ```
 helm version
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -127,7 +127,7 @@ NAME                                                        DESIRED   CURRENT   
 replicaset.apps/nginx-ingress-nginx-controller-559779bdcc   1         1         1       119s
 ```
 
-3. Get the IP address of the Load balancer and enter it in the DNS of the domain management interface:
+### 3. Get the IP address of the Load balancer and enter it in the DNS of the domain management interface:
 https://domains.google.com/registrar/reallifeprojects.com/dns#resourcerecords
 ```
 neofinone@cloudshell:~ (neofine)$ sudo apt-get install iputils-ping
@@ -141,14 +141,13 @@ PING www.reallifeprojects.com (34.136.24.118) 56(84) bytes of data.
 64 bytes from 118.24.136.34.bc.googleusercontent.com (34.136.24.118): icmp_seq=1 ttl=108 time=39.0 ms
 64 bytes from 118.24.136.34.bc.googleusercontent.com (34.136.24.118): icmp_seq=2 ttl=108 time=38.9 ms
 64 bytes from 118.24.136.34.bc.googleusercontent.com (34.136.24.118): icmp_seq=3 ttl=108 time=39.0 ms
-64 bytes from 118.24.136.34.bc.googleusercontent.com (34.136.24.118): icmp_seq=4 ttl=108 time=38.9 ms
 ^C
 --- www.reallifeprojects.com ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 6ms
+3 packets transmitted, 3 received, 0% packet loss, time 6ms
 rtt min/avg/max/mdev = 38.912/38.960/38.999/0.200 ms
 ```
 
-4. Install the Nginx Ingress **Resource**:
+### 4. Install the Nginx Ingress **Resource**:
 ```
 neofinone@cloudshell:~$ kubectl apply -f nginx-ingress.yaml 
 ingress.networking.k8s.io/reallifeprojects created
@@ -167,7 +166,7 @@ neofinone@cloudshell:~$ curl www.reallifeprojects.com
 neofinone@cloudshell:~$ 
 ```
 
-5. Open a browser and access the apps:
+### 5. Open a browser and access the apps:
 ```
 www.reallifeprojects.com
 ```
