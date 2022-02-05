@@ -2,20 +2,16 @@
 
 ### 1. Ensure the applications are **deployed** and running:
 
- The code to build the React Cat application is:
- 
+ The code to build the React Cat application is:   
   https://github.com/jayaramcloud/react-cat
 
- The docker file whick builds the Container is:
- 
+ The docker file whick builds the Container is:   
    https://github.com/jayaramcloud/react-cat/blob/main/Dockerfile
 
- The CI/CD project which builds the container from this Dockerfile is:
- 
+ The CI/CD project which builds the container from this Dockerfile is:   
   https://github.com/jayaramcloud/react-cat/blob/main/.github/workflows/build-docker-image.yml 
 
- The Docker container image is present at:
- 
+ The Docker container image is present at:   
   https://hub.docker.com/repository/docker/canada/en
 
  After this login to the Kuberntes Cluster to deploy the application.
