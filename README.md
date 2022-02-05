@@ -187,4 +187,8 @@ neofinone@cloudshell:~$
 ### 5. Open a browser and access the apps:
 ```
 www.reallifeprojects.com
+http://subdomain.reallifeprojects.com/
+http://www.freemiumdb.com/hello-go
+http://www.freemiumdb.com/   # 404 not found - nginx
+
 ```
