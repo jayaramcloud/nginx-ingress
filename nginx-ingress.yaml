@@ -18,3 +18,23 @@ spec:
                 name: react-cat
                 port:
                   number: 80
+    - host: subdomain.reallifeprojects.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: react-cat
+                port:
+                  number: 80
+    - host: www.freemiumdb.com
+      http:
+        paths:
+          - path: /hello-go
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-go
+                port:
+                  number: 8081
