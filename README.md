@@ -2,7 +2,18 @@
 
 1. Ensure the applications are deployed and running:
 ```
-kubectl get deployments -n dev
+neofinone@cloudshell:~$ kubectl apply -f  react-cat-service.yaml 
+service/react-cat created
+neofinone@cloudshell:~$ kubectl get deployment -n dev
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+react-cat   3/3     3            3           53s
+
+neofinone@cloudshell:~$ kubectl apply -f  react-cat.yaml         
+deployment.apps/react-cat created
+neofinone@cloudshell:~$ kubectl get service -n dev
+NAME        TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
+react-cat   ClusterIP   10.8.12.178   <none>        80/TCP    91s
+
 ```
 
 2. Install the Nginx Ingress **Controller**:
@@ -99,17 +110,46 @@ replicaset.apps/nginx-ingress-nginx-controller-559779bdcc   1         1         
 ```
 
 3. Get the IP address of the Load balancer and enter it in the DNS of the domain management interface:
+https://domains.google.com/registrar/reallifeprojects.com/dns#resourcerecords
 ```
-ping the hostname & ensure it resolves
-ping mydomain.com
+neofinone@cloudshell:~ (neofine)$ sudo apt-get install iputils-ping
+```
+
+ping the hostname  www.reallifeprojects.com & ensure it resolves with the new IP address:
+
+```
+neofinone@cloudshell:~ (neofine)$ ping www.reallifeprojects.com
+PING www.reallifeprojects.com (34.136.24.118) 56(84) bytes of data.
+64 bytes from 118.24.136.34.bc.googleusercontent.com (34.136.24.118): icmp_seq=1 ttl=108 time=39.0 ms
+64 bytes from 118.24.136.34.bc.googleusercontent.com (34.136.24.118): icmp_seq=2 ttl=108 time=38.9 ms
+64 bytes from 118.24.136.34.bc.googleusercontent.com (34.136.24.118): icmp_seq=3 ttl=108 time=39.0 ms
+64 bytes from 118.24.136.34.bc.googleusercontent.com (34.136.24.118): icmp_seq=4 ttl=108 time=38.9 ms
+^C
+--- www.reallifeprojects.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 6ms
+rtt min/avg/max/mdev = 38.912/38.960/38.999/0.200 ms
 ```
 
 4. Install the Nginx Ingress **Resource**:
 ```
-kubectl apply -f nginx-ingress.yaml
+neofinone@cloudshell:~$ kubectl apply -f nginx-ingress.yaml 
+ingress.networking.k8s.io/reallifeprojects created
+neofinone@cloudshell:~$ kubectl get ing -n dev
+NAME               CLASS   HOSTS                      ADDRESS   PORTS   AGE
+reallifeprojects   nginx   www.reallifeprojects.com             80      34s
+
+neofinone@cloudshell:~$ curl www.reallifeprojects.com
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+--------------
+    -->
+  </body>
+</html>
+neofinone@cloudshell:~$ 
 ```
 
 5. Open a browser and access the apps:
 ```
-www.mysite.com
+www.reallifeprojects.com
 ```
