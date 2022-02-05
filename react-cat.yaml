@@ -1,0 +1,34 @@
+# Deployment of the React cat application
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-cat
+  namespace: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: react-cat
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: react-cat
+    spec:
+      containers:
+        - name: react-cat
+          image: 'canada/en:v1.1'
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          imagePullPolicy: Always
+      restartPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
