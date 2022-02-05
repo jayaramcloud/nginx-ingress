@@ -1,11 +1,11 @@
 # nginx-ingress
 
-Ensure the applications are deployed and running:
+1. Ensure the applications are deployed and running:
 ```
 kubectl get deployments -n dev
 ```
 
-Install the Nginx Ingress Controller
+2. Install the Nginx Ingress **Controller**:
 ```
 helm version
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -14,19 +14,18 @@ helm install nginx ingress-nginx/ingress-nginx -n nginx-ingress
 kubectl get all -n nginx-ingress
 ```
 
-Get the IP address of the Load balancer and enter it in the DNS of the domain management interface:
+3. Get the IP address of the Load balancer and enter it in the DNS of the domain management interface:
 ```
 ping the hostname & ensure it resolves
 ping mydomain.com
 ```
 
-
-Install the Nginx Ingress 
+4. Install the Nginx Ingress **Resource**:
 ```
 kubectl apply -f nginx-ingress.yaml
 ```
 
-Open a browser and access the apps:
+5. Open a browser and access the apps:
 ```
 www.mysite.com
 ```
