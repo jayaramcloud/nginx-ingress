@@ -192,3 +192,29 @@ http://www.freemiumdb.com/hello-go
 http://www.freemiumdb.com/   # 404 not found - nginx
 
 ```
+
+### 6. Notes on the Ingress configurations:
+
+###### Path based Routing
+```
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /video/*
+            backend:
+              serviceName: video-service
+              servicePort: 80                        
+          - path: /image/*
+            backend:
+              serviceName: image-service
+              servicePort: 80            
+          - path: /*
+            backend:
+              serviceName: some-404-app
+              servicePort: 8080 
+```
+
+```
+Note1: In path based routing order is very important, use  "/*", at the end of all rules.
+```
