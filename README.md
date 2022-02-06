@@ -139,6 +139,9 @@ NAME                                                        DESIRED   CURRENT   
 replicaset.apps/nginx-ingress-nginx-controller-559779bdcc   1         1         1       119s
 ```
 
+What happens when the Ingress Controller is installed ? 
+
+
 ### 3. Get the IP address of the Load balancer and enter it in the DNS of the domain management interface:
 https://domains.google.com/registrar/reallifeprojects.com/dns#resourcerecords  
 Custom records  
@@ -293,3 +296,7 @@ spec:
 ```
 Note1: In path based routing order is very important, use  "/*", at the end of all rules.
 ```
+Lots of Annotations:  
+https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/  
+Many examples:  
+https://github.com/nginxinc/kubernetes-ingress/tree/master/examples  
