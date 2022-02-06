@@ -258,5 +258,38 @@ spec:
 ```
 
 ```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: allmyapi
+  namespace: dev
+spec:
+  ingressClassName: nginx
+  tls:
+    - secretName: tls-secret
+  rules:
+    - host: xyz-backend.dev.mysite.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-api
+                port:
+                  number: 80
+    - host: cba-api.dev.mysite.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: abc-api
+                port:
+                  number: 80
+```
+
+```
 Note1: In path based routing order is very important, use  "/*", at the end of all rules.
 ```
