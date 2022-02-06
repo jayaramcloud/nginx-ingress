@@ -197,7 +197,7 @@ http://www.freemiumdb.com/   # 404 not found - nginx
 ```
 
 ### 6. Notes on the Ingress configurations:
-**Content-based routing:**
+**Content-based routing:**  
   Host-based routing. For example, routing requests with the host header foo.example.com to one group of services and the host header bar.example.com to another group.  
   Path-based routing. For example, routing requests with the URI that starts with /serviceA to service A and requests with the URI that starts with /serviceB to service B.    
 **TLS/SSL termination** for each hostname, such as foo.example.com.  
