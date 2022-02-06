@@ -195,6 +195,7 @@ http://www.freemiumdb.com/   # 404 not found - nginx
 
 ### 6. Notes on the Ingress configurations:
 
+
 ###### Path based Routing
 ```
 spec:
@@ -213,6 +214,47 @@ spec:
             backend:
               serviceName: some-404-app
               servicePort: 8080 
+```
+
+###### Host based Routing
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-myservicea
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: myservicea.website.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myservicea
+            port:
+              number: 80
+  - host: myserviceb.website.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myserviceb
+            port:
+              number: 80
+  - host: awesomecat.site.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myservicec
+            port:
+              number: 80              
 ```
 
 ```
