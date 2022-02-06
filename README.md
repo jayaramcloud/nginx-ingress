@@ -1,5 +1,5 @@
-### nginx-ingress
-
+###  Nginx-ingress
+An ingress is a resource that enables traffic to come into your applications deployed in a Kubernetes cluster from the outside, usually as HTTP or HTTPS.
 ### 1. Ensure the applications are **deployed** and running:
 
  The code to build the React Cat application is:   
