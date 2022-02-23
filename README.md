@@ -14,8 +14,21 @@ An ingress is a resource that enables traffic to come into your applications dep
  The Docker container image is present at:   
   https://hub.docker.com/repository/docker/canada/en
 
- After this login to the Kuberntes Cluster to deploy the application.
+ After connecting to the Kuberntes Cluster using kubectl , get the files to deploy the application.
 ```
+jayaram_linux@cloudshell:~ (kubetrain-81cf2)$ git clone https://github.com/jayaramcloud/nginx-ingress
+Cloning into 'nginx-ingress'...
+remote: Enumerating objects: 94, done.
+remote: Counting objects: 100% (94/94), done.
+remote: Compressing objects: 100% (93/93), done.
+remote: Total 94 (delta 51), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (94/94), 35.74 KiB | 469.00 KiB/s, done.
+Resolving deltas: 100% (51/51), done.
+jayaram_linux@cloudshell:~ (kubetrain-81cf2)$ cd nginx-ingress/;ls
+create-ns-dev.yaml  hello-go.yaml  LICENSE  nginx-ingress.yaml  react-cat-deployment.yaml  README.md
+#Create the namespace
+neofinone@cloudshell:~$ kubectl apply -f  create-ns-dev.yaml 
+
 # Deploying React-cat & its services
 neofinone@cloudshell:~$ kubectl apply -f  react-cat-service.yaml 
 service/react-cat created
